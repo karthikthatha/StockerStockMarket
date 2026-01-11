@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stocker - Stock Market Website Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOTSTRAP 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background: #f5f6f8;
+            color: #333;
+        }
+        /* HEADER */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        .navbar-custom {
+            max-width: 1200px;
+            margin: auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            height: 40px;
+        }
+        .navbar-custom a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #111;
+            font-weight: 600;
+        }
+        /* SOCIAL */
+        .share {
+            position: fixed;
+            top: 200px;
+            left: 20px;
+        }
+
+        .share a {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .fb {
+            background: #3b5998;
+        }
+
+        .tw {
+            background: #000;
+        }
+
+        .rd {
+            background: #ff4500;
+        }
+
+        .pt {
+            background: #bd081c;
+        }
+
+        .in {
+            background: #0077b5;
+        }
+
+        /* PREVIEW IMAGE */
+        .preview img {
+            width: 100%;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            background: #fff;
+            padding: 25px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .info div {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        /* PROMO */
+        .promo {
+            margin-top: 20px;
+            background: #002d62;
+            color: #fff;
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        /* CONTENT */
+        .content-wrap {
+            max-width: 860px;
+            margin: 40px auto;
+        }
+
+        .content {
+            background: #fff;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .content p {
+            max-width: 720px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            color: #555;
+        }
+
+        .content h2 {
+            margin: 30px 0 18px;
+            font-size: 22px;
+        }
+
+        .feature-list {
+            max-width: 720px;
+            padding-left: 18px;
+        }
+
+        .feature-list li {
+            margin-bottom: 8px;
+        }
+
+        .site-footer {
+            background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
+            color: #fff;
+            padding: 60px 20px 20px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: "";
+            display: block;
+            width: 40px;
+            height: 2px;
+            background: #0d6efd;
+            margin-top: 10px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        .footer-col p a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            font-size: 14px;
+            text-decoration: none;
+        }
+
+        .footer-col ul li a:hover {
+            color: #0d6efd;
+        }
+
+        /* SOCIAL ICONS */
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .social-icons .x {
+            background: #000;
+        }
+
+        .social-icons .fb {
+            background: #3b5998;
+        }
+
+        .social-icons .pt {
+            background: #bd081c;
+        }
+
+        /* SUBSCRIBE */
+        .subscribe {
+            display: flex;
+            margin-top: 15px;
+        }
+
+        .subscribe input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .subscribe button {
+            background: #0d6efd;
+            border: none;
+            color: #fff;
+            padding: 10px 18px;
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        /* FOOTER BOTTOM */
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 15px;
+            font-size: 13px;
+            color: #aaa;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:900px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media(max-width:600px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* SECTION */
+        .related {
+            max-width: 800px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .related h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #111;
+        }
+
+        /* GRID */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        /* CARD */
+        .card {
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* IMAGE */
+        .card-img {
+            position: relative;
+        }
+
+        .card-img img {
+            width: 100%;
+            display: block;
+        }
+
+        /* BADGES */
+        .badges {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .badges span {
+            background: #0d6efd;
+            color: #fff;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 14px;
+            font-weight: 600;
+        }
+
+        /* BODY */
+        .card-body {
+            padding: 18px;
+        }
+
+        .card-body h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 15px;
+        }
+
+        /* ACTIONS */
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .download {
+            border: 1px solid #ccc;
+            padding: 7px 14px;
+            font-size: 13px;
+            border-radius: 4px;
+            color: #333;
+            background: #fff;
+        }
+
+        .demo {
+            background: #0d6efd;
+            color: #fff;
+            padding: 7px 16px;
+            font-size: 13px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:900px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* BACK TO TOP */
+        .top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: #0d6efd;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width:900px) {
+            .share {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SOCIAL -->
+    <div class="share">
+        <a class="fb">f</a>
+        <a class="tw">x</a>
+        <a class="rd">r</a>
+        <a class="pt">p</a>
+        <a class="in">in</a>
+    </div>
+
+    <header>
+        <div class="navbar-custom">
+            <div class="logo">
+                <img src="https://htmlcodex.com/wp-content/uploads/2020/12/htmlcodex.png">
+            </div>
+            <div>
+                <a href="#">All Templates</a>
+                <a href="#">Credit Removal</a>
+                <a href="#">Template License</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <div class="container my-5">
+        <div class="row g-4">
+            <div class="col-lg-8">
+                <span class="badge bg-primary">Agency</span>
+                <span class="badge bg-primary">Corporate</span>
+                <h1 class="mt-3">Stocker – Stock Market Website Template</h1>
+                <div class="preview mt-3">
+                    <img
+                        src="https://i0.wp.com/htmlcodex.com/wp-content/uploads/2024/07/stock-market-website-template.jpg">
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="sidebar">
+                    <h2>10268</h2>
+                    <p>Free Downloads</p>
+                    <button class="btn btn-primary w-100 mb-2">Download Now</button>
+                    <button class="btn btn-info text-white w-100 mb-3">Live Preview</button>
+
+                    <div class="info">
+                        <div><span>Updated</span><span>2 months ago</span></div>
+                        <div><span>License</span><span>CC BY 4.0</span></div>
+                        <div><span>Author</span><span>HTML Codex</span></div>
+                    </div>
+
+                    <div class="promo mt-3">
+                        <h6>Working Contact Form<br>with Ajax & PHP</h6>
+                        <button class="btn btn-primary w-100 mt-2">Download Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- CONTENT -->
+    <div class="content-wrap">
+        <div class="content">
+            <p>Stocker - is a clean and modern free stock market website template, the perfect starting point for anyone
+                looking to build a mobile-friendly and professional business website. Whether you're a financial
+                analyst, a stock marketer, an investment company, a wealth management firm, or a web developer seeking a
+                robust framework for you or your client's project, this template is designed to meet all your needs.</p>
+            <p>Stocker - free stock exchange website template comes with a sleek and modern design that is fully
+                responsive, ensuring that your website looks great on any device. Whether your users are browsing the
+                site from a desktop, tablet, or smartphone, they will have a seamless and enjoyable experience. With its
+                user-friendly design, rich feature set, and extensive customization options, this template is your
+                gateway to building a successful financial website.</p>
+            <p>Stocker - free stock trading website template is designed using the latest web technologies like
+                HTML5,CSS3, jQuery, and Bootstrap v5 framework. With a clean and well-organized codebase, the template
+                is easy to customize and scale. Whether you need to make minor tweaks or major modifications, the
+                template's clean and well-commented code supports all levels of customization. It includes 10+
+                pre-designed demo pages for Home, About, Service, Blog, Feature, Team, Testimonial, Offer, FAQs, 404
+                Error, and Contact page. These demo pages are highly customizable and easy to use.</p>
+
+            <h2>Free Stock Market Website Template</h2>
+            <ul class="feature-list">
+                <li>HTML5 and CSS3</li>
+                <li>Sass supported coding</li>
+                <li>Bootstrap v5 framework</li>
+                <li>Google font support</li>
+                <li>Bootstrap icon support</li>
+                <li>Font Awesome icon font</li>
+                <li>10+ pre-built HTML files</li>
+                <li>Well-commented code</li>
+                <li>Developer-friendly code</li>
+                <li>Responsive design</li>
+                <li>Sticky top navbar</li>
+                <li>Dropdown navbar</li>
+                <li>Header carousel</li>
+                <li>Smooth scrolling</li>
+                <li>Contact form</li>
+            </ul>
+        </div>
+    </div>
+    <section class="related">
+        <h2>You may also like</h2>
+        <div class="cards">
+        <!-- CARD 1 -->
+            <div class="card">
+                <div class="card-img">
+                    <img
+                        src=https://i0.wp.com/htmlcodex.com/wp-content/uploads/2022/06/insurance-html-template.jpg?resize=740%2C463&ssl=1>
+                    <div class="badges">
+                        <span>AGENCY</span>
+                        <span>BUSINESS</span>
+                        <span>CORPORATE</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>CONSULT - Consultancy Website Template</h3>
+                    <div class="card-actions">
+                        <div class="download">⬇ 11160</div>
+                        <a class="demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- CARD 2 -->
+            <div class="card">
+                <div class="card-img">
+                    <img
+                        src=https://i0.wp.com/htmlcodex.com/wp-content/uploads/2024/03/investment-website-template.jpg?resize=740%2C463&ssl=1>
+                    <div class="badges">
+                        <span>AGENCY</span>
+                        <span>BUSINESS</span>
+                        <span>CORPORATE</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>BizConsult - Consulting HTML Template</h3>
+                    <div class="card-actions">
+                        <div class="download">⬇ 8206</div>
+                        <a class="demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- CARD 3 -->
+            <div class="card">
+                <div class="card-img">
+                    <img
+                        src=https://i0.wp.com/htmlcodex.com/wp-content/uploads/2021/07/consultancy-website-template.jpg?resize=740%2C463&ssl=1>
+                    <div class="badges">
+                        <span>AGENCY</span>
+                        <span>BUSINESS</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Insure - Free Insurance HTML Template</h3>
+                    <div class="card-actions">
+                        <div class="download">⬇ 9576</div>
+                        <a class="demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- CARD 4 -->
+            <div class="card">
+                <div class="card-img">
+                    <img
+                        src=https://i0.wp.com/htmlcodex.com/wp-content/uploads/2024/06/life-insurance-website-template.jpg?resize=740%2C463&ssl=1>
+                    <div class="badges">
+                        <span>BUSINESS</span>
+                        <span>CORPORATE</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Finanza - Financial Services Website Template</h3>
+                    <div class="card-actions">
+                        <div class="download">⬇ 11633</div>
+                        <a class="demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- CARD 5 -->
+            <div class="card">
+                <div class="card-img">
+                    <img
+                        src=https://i0.wp.com/htmlcodex.com/wp-content/uploads/2022/11/financial-services-website-template.jpg?resize=740%2C463&ssl=1>
+                    <div class="badges">
+                        <span>AGENCY</span>
+                        <span>BUSINESS</span>
+                        <span>CORPORATE</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>LifeSure - Life Insurance Website Template</h3>
+                    <div class="card-actions">
+                        <div class="download">⬇ 9780</div>
+                        <a class="demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+            <!-- CARD 6 -->
+            <div class="card">
+                <div class="card-img">
+                    <img
+                        src=https://i0.wp.com/htmlcodex.com/wp-content/uploads/2022/04/consulting-html-template.jpg?resize=740%2C463&ssl=1>
+                    <div class="badges">
+                        <span>AGENCY</span>
+                        <span>BUSINESS</span>
+                        <span>CORPORATE</span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3>Investa - Investment Website Template</h3>
+                    <div class="card-actions">
+                        <div class="download">⬇ 6744</div>
+                        <a class="demo">Live Demo</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <div class="top">↑</div>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- COLUMN 1 -->
+            <div class="footer-col">
+                <h4>Who we are</h4>
+                <p>
+                    HTML Codex is one of the top designers and publishers of
+                    FREE HTML Website Templates. Please support HTML Codex
+                    by mentioning and sharing it with your friends
+                    <a href="#">Read More</a>
+                </p>
+                <div class="social-icons">
+                    <a class="x">X</a>
+                    <a class="fb">f</a>
+                    <a class="pt">p</a>
+                </div>
+            </div>
+            <!-- COLUMN 2 -->
+            <div class="footer-col">
+                <h4>Learn about us</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <!-- COLUMN 3 -->
+            <div class="footer-col">
+                <h4>Our creative works</h4>
+                <ul>
+                    <li><a href="#">HTML Templates</a></li>
+                    <li><a href="#">HTML Landing Pages</a></li>
+                    <li><a href="#">HTML Email Templates</a></li>
+                    <li><a href="#">HTML Snippets</a></li>
+                </ul>
+            </div>
+            <!-- COLUMN 4 -->
+            <div class="footer-col">
+                <h4>Stay updated</h4>
+                <p>
+                    If you want to get information about new template published
+                    please input your email below. Don't worry, your email address
+                    will be protected to us.
+                </p>
+                <div class="subscribe">
+                    <input type="email" placeholder="Your email address">
+                    <button>SUBMIT</button>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Copyright © 2025 HTML Codex. All rights reserved.
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
